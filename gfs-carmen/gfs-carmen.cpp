@@ -220,21 +220,13 @@ int main(int argc, const char * const * argv){
 				cerr << "Particle reproduction story end" << endl;
 /*				
 				//then if you want to access the BEST MAP,
-				//of course by comying it in a plain structure 
+				//of course by copying it in a plain structure 
 				Map<double, DoubleArray2D, false>* mymap = processor->getParticles()[best_idx].map.toDoubleMap();
 				//at this point mymap is yours. Can do what you want.
 												
 				double best_weight=particles[best_idx].weightSum;
 				cerr << "Best Particle is " << best_idx << " with weight " << best_weight << endl;
 				
-				//if you want to recover the particle BOUNDING BOX:
-				std::vector<Point>poses(particles.size());
-				for (unsigned int i=0; i<particles.size(); i++){
-					poses[i]=particles[i].pose;
-				}
-				OrientedBoundingBox<double> bbox(poses); 
-				cerr << "Area" << bbox.area() << endl;
-				delete mymap;
 */				
 				cerr << __PRETTY_FUNCTION__  << "CLONING... " << endl;
 				GridSlamProcessor* newProcessor=processor->clone();
