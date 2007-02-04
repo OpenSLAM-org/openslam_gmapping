@@ -188,11 +188,13 @@ SensorMap CarmenConfiguration::computeSensorMap() const{
 				
 		
 		if (beam_no==180 || beam_no==181)
-			resolution =1.;
+		  resolution =1.;
 		else if (beam_no==360 || beam_no==361)
-			resolution =.5;
+		  resolution =.5;
+		else if (beam_no==540 || beam_no==541)
+		  resolution =.5;
 		else if (beam_no==769)
-			resolution =360./1024.;
+		  resolution =360./1024.;
 		else {
 			key=find("laser_front_laser_resolution");
 			if (key!=end()){
@@ -255,11 +257,13 @@ SensorMap CarmenConfiguration::computeSensorMap() const{
 				
 		
 		if (beam_no==180 || beam_no==181)
-			resolution =1.;
+		  resolution =1.;
 		else if (beam_no==360 || beam_no==361)
-			resolution =.5;
+		  resolution =.5;
+		else if (beam_no==540 || beam_no==541)
+		  resolution =.5;
 		else if (beam_no==769)
-			resolution =360./1024.;
+		  resolution =360./1024.;
 		else {
 			key=find("laser_front_laser_resolution");
 			if (key!=end()){
