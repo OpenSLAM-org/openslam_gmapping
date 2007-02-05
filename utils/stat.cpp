@@ -13,6 +13,12 @@ int sampleUniformInt(int max)
   return (int)(max*(rand()/(RAND_MAX+1.0)));
 }
 
+double sampleUniformDouble(double min, double max)
+{
+  return min + (rand() / (double)RAND_MAX) * (max - min);
+}
+
+
 double sampleGaussian(double sigma, unsigned long int S) {
 	static gsl_rng * r = NULL;
 	if(r==NULL) {

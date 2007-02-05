@@ -12,7 +12,8 @@ double sampleGaussian(double sigma,unsigned long int S=0);
 
 double evalGaussian(double sigmaSquare, double delta);
 double evalLogGaussian(double sigmaSquare, double delta);
- int sampleUniformInt(int max);
+int sampleUniformInt(int max);
+double sampleUniformDouble(double min, double max);
 
 struct Covariance3{
 	Covariance3 operator + (const Covariance3 & cov) const;
