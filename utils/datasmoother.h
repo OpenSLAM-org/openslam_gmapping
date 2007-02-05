@@ -7,6 +7,8 @@
 #include <values.h>
 #include "stat.h"
 
+namespace GMapping {
+
 class DataSmoother {
  public: 
   struct DataPoint {
@@ -100,4 +102,5 @@ class DataSmoother {
   double m_to;
 };
 
+}
 #endif
