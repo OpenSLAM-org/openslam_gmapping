@@ -2,13 +2,13 @@
 
 #echo "message: verbose = $VERBOSE"
 
-if (( VERBOSE == 1 ))
+if ($VERBOSE)
 then
 	exit 0;
 fi
 
 a=$MAKELEVEL
 
-while (( 0 < a )); do echo -n "    "; let "a = $a - 1";done
+while ((0<$a)); do echo -n "    "; let "a = $a - 1";done
 
 echo $1

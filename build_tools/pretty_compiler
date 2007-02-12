@@ -1,8 +1,9 @@
 #!/bin/sh
 
+
 #echo "pretty: verbose = $VERBOSE"
 
-if (( VERBOSE == 1 ))
+if ($VERBOSE)
 then
 	echo $1;
 	if ! eval $1
