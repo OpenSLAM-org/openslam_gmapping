@@ -14,7 +14,7 @@ inline void GridSlamProcessor::scanMatch(const double* plainReading){
     OrientedPoint corrected;
     double score, l, s;
     score=m_matcher.optimize(corrected, it->map, it->pose, plainReading);
-    it->pose=corrected;
+    //    it->pose=corrected;
     if (score>m_minimumScore){
       it->pose=corrected;
     } else {
