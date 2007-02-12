@@ -123,19 +123,43 @@ void LaserRecord::read(istream& is){
 
 void LaserRecord::write(ostream& os){
 	os << "WEIGHT " << weight << endl;
-	os << "FLASER " <<  dim;
-	os << setiosflags(ios::fixed) << setprecision(2);
+	os << "ROBOTLASER1 ";
+	
+	if ((dim == 541)||(dim == 540)) { // S300
+	  os <<" 4";  // laser type
+	  os <<" -2.351831";  // start_angle
+	  os <<" 4.712389";  // fov
+	  os <<" 0.008727";  // angular res
+	  os <<" 30.0" ;  // maxrange
+	}
+	else {     // PLS
+	  os <<" 0";  // laser type
+	  os <<" -1.570796";  // start_angle
+	  os <<" 3.141593";  // fov
+	  os <<" 0.017453";  // angular res
+	  os <<" 81.9" ;  // maxrange
+	}
+	os <<" 0.01"; // accuracy	
+	os <<" 0" ;  // remission mode
+	os <<" "<< dim; // num readings
+        os << setiosflags(ios::fixed) << setprecision(2);
 	for (unsigned int i=0; i< dim; i++){
 		os <<" "<< readings[i] ;
 	}
 	os << setiosflags(ios::fixed) << setprecision(6);
+	os <<" 0"; // num remession values
 	os <<" "<< pose.x;
 	os <<" "<< pose.y;
 	os <<" "<< pose.theta;
 	os <<" "<< pose.x;
 	os <<" "<< pose.y;
 	os <<" "<< pose.theta;
-	os <<" "<< time <<  " pippo " << time << endl;
+	os <<" 0" ;  // tv
+	os <<" 0" ;  // rv
+	os <<" 0.55" ;  // forward_safety_dist
+	os <<" 0.375" ;     // sideward_safety_dist
+	os <<" 1000000.0" ; // turn_axis
+	os <<" "<< time <<  " localhost " << time << endl;
 };
 
 void ResampleRecord::read(istream& is){
