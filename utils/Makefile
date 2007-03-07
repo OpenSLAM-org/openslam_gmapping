@@ -1,5 +1,5 @@
 OBJS= stat.o  movement.o
-APPS= autoptr_test stat_test test_smoother
+APPS= autoptr_test stat_test test_smoother test_normality isnormal
 
 LDFLAGS+= $(GSL_LIB)
 CPPFLAGS+= $(GSL_INCLUDE) -DFSLINE
