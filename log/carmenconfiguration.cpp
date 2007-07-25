@@ -6,7 +6,7 @@
 #include <sensor_range/rangesensor.h>
 
 
-#define LINEBUFFER_SIZE 2048
+#define LINEBUFFER_SIZE 10000
 
 namespace GMapping {
 
