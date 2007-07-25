@@ -193,13 +193,19 @@ SensorMap CarmenConfiguration::computeSensorMap() const{
 		  resolution =.5;
 		else if (beam_no==540 || beam_no==541)
 		  resolution =.5;
-		else if (beam_no==769)
+		else if (beam_no==769) {
 		  resolution =360./1024.;
+		  maxrange = 4.1;
+		}
+		else if (beam_no==682) {
+		  resolution =360./1024.;
+		  maxrange = 4.1;
+		}
 		else {
 			key=find("laser_front_laser_resolution");
 			if (key!=end()){
 				resolution=atof(key->second.front().c_str());
-				cerr << "FRONT RES" << resolution << endl;
+				cerr << "FRONT RES " << resolution << endl;
 			}
 		}
 		
@@ -224,7 +230,8 @@ SensorMap CarmenConfiguration::computeSensorMap() const{
 		}
 		laser->updateBeamsLookup();
 		smap.insert(make_pair(laser->getName(), laser));
-		cerr << "front beams" << beam_no << endl;
+		cerr << "front beams " << beam_no << endl;
+		cerr << "maxrange " << maxrange << endl;
 	}
 
 
