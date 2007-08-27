@@ -60,7 +60,7 @@ class ScanMatcher{
 		PARAM_SET_GET(double, llsamplestep, protected, public, public)
 		PARAM_SET_GET(double, lasamplerange, protected, public, public)
 		PARAM_SET_GET(double, lasamplestep, protected, public, public)
-		PARAM_SET_GET(double, generateMap, protected, public, public)
+		PARAM_SET_GET(bool, generateMap, protected, public, public)
 		PARAM_SET_GET(double, enlargeStep, protected, public, public)
 		PARAM_SET_GET(double, fullnessThreshold, protected, public, public)
 		PARAM_SET_GET(double, angularOdometryReliability, protected, public, public)

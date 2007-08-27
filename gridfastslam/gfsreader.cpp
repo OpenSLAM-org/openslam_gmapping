@@ -1,5 +1,6 @@
 #include "gfsreader.h"
 #include <iomanip>
+#include <limits>
 
 namespace  GMapping { 
 
@@ -165,9 +166,9 @@ void LaserRecord::write(ostream& os){
 void ResampleRecord::read(istream& is){
 	is >> dim;
 	for (unsigned int i=0; i< dim; i++){
-		unsigned int i;
-		is >> i;
-		indexes.push_back(i);
+		unsigned int j;
+		is >> j;
+		indexes.push_back(j);
 	}
 }
 
@@ -267,7 +268,7 @@ unsigned int RecordList::getBestIdx() const {
 	}
 	unsigned int dim=scanmatch->dim;
 	sampleSize=(int)dim;
-	double bestw=-1e1000;
+	double bestw=-std::numeric_limits<double>::max();
 	unsigned int best=scanmatch->dim+1;
 	for (unsigned i=0; i<dim; i++){
 		double w=getLogWeight(i);

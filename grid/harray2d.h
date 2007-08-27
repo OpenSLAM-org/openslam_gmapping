@@ -116,7 +116,7 @@ HierarchicalArray2D<Cell>& HierarchicalArray2D<Cell>::operator=(const Hierarchic
 
 
 template <class Cell>
-void HierarchicalArray2D<Cell>::setActiveArea(const HierarchicalArray2D<Cell>::PointSet& aa, bool patchCoords){
+void HierarchicalArray2D<Cell>::setActiveArea(const typename HierarchicalArray2D<Cell>::PointSet& aa, bool patchCoords){
 	m_activeArea.clear();
 	for (PointSet::const_iterator it= aa.begin(); it!=aa.end(); it++){
 		IntPoint p;
@@ -162,7 +162,7 @@ template <class Cell>
 bool HierarchicalArray2D<Cell>::isAllocated(int x, int y) const{
 	IntPoint c=patchIndexes(x,y);
 	autoptr< Array2D<Cell> >& ptr=this->m_cells[c.x][c.y];
-	return (bool)ptr;
+	return (ptr != 0);
 }
 
 template <class Cell>

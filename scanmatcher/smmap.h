@@ -29,8 +29,8 @@ struct PointAccumulator{
 
 void PointAccumulator::update(bool value, const Point& p){
 	if (value) {
-		acc.x+=p.x;
-		acc.y+=p.y; 
+		acc.x+= static_cast<float>(p.x);
+		acc.y+= static_cast<float>(p.y); 
 		n++; 
 		visits+=SIGHT_INC;
 	} else

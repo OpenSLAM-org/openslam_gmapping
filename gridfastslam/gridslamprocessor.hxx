@@ -42,7 +42,7 @@ inline void GridSlamProcessor::scanMatch(const double* plainReading){
 inline void GridSlamProcessor::normalize(){
   //normalize the log m_weights
   double gain=1./(m_obsSigmaGain*m_particles.size());
-  double lmax=-1e1000;
+  double lmax= -std::numeric_limits<double>::max();
   for (ParticleVector::iterator it=m_particles.begin(); it!=m_particles.end(); it++){
     lmax=it->weight>lmax?it->weight:lmax;
   }

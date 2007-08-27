@@ -1,4 +1,5 @@
 #include "movement.h"
+#include "gvalues.h"
 
 namespace GMapping {
 

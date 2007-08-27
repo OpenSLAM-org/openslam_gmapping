@@ -654,7 +654,7 @@ double ScanMatcher::likelihood
 	//OrientedPoint delta=mean-currentPose;
 	//cout << "delta.x=" << delta.x << " delta.y=" << delta.y << " delta.theta=" << delta.theta << endl;
 	//normalize the likelihood
-	double lmax=-MAXDOUBLE;
+  double lmax=-std::numeric_limits<double>::max();
 	double lcum=0;
 	for (ScoredMoveList::const_iterator it=moveList.begin(); it!=moveList.end(); it++){
 		lmax=it->likelihood>lmax?it->likelihood:lmax;

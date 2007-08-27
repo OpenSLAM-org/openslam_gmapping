@@ -50,7 +50,7 @@ void ScanMatcherProcessor::setSensorMap(const SensorMap& smap, std::string senso
 	const RangeSensor* rangeSensor=dynamic_cast<const RangeSensor*>((laser_it->second));
 	assert(rangeSensor && rangeSensor->beams().size());
 	
-	m_beams=rangeSensor->beams().size();
+	m_beams=static_cast<unsigned int>(rangeSensor->beams().size());
 	double* angles=new double[rangeSensor->beams().size()];
 	for (unsigned int i=0; i<m_beams; i++){
 		angles[i]=rangeSensor->beams()[i].pose.theta;

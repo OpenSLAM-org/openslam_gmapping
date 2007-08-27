@@ -1,7 +1,8 @@
 #ifndef GRIDSLAMPROCESSOR_H
 #define GRIDSLAMPROCESSOR_H
 
-#include <limits.h>
+#include <climits>
+#include <limits>
 #include <fstream>
 #include <vector>
 #include <deque>
