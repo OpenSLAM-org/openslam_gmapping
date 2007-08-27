@@ -1,14 +1,17 @@
-OBJS= carmenwrapper.o
-APPS= 
+-include ./global.mk
 
-LIBS+= -L$(CARMEN_HOME)/lib -lnavigator_interface -lsimulator_interface -lrobot_interface -llaser_interface -lglobal  -lm -lutils -lsensor_range -llog -lscanmatcher  -lparam_interface  -lipc -lpthread -lz
-CPPFLAGS+=-I../sensor -I$(CARMEN_HOME)/include
-
--include ../global.mk
-
-ifeq ($(CARMENSUPPORT), 0)
-OBJS=
-	-include ../build_tools/Makefile.app
+ifeq ($(CARMENSUPPORT),1)
+SUBDIRS=utils  sensor log configfile scanmatcher carmenwrapper gridfastslam gui gfs-carmen 
 else
-	-include ../build_tools/Makefile.generic-shared-object
+ifeq ($(MACOSX),1)
+SUBDIRS=utils gnetwork sensor log configfile scanmatcher gridfastslam 
+else
+SUBDIRS=utils gnetwork sensor log configfile scanmatcher gridfastslam gui 
 endif
+endif
+
+LDFLAGS+=
+CPPFLAGS+= -I../sensor
+
+-include ./build_tools/Makefile.subdirs
+
