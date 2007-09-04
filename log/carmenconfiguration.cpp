@@ -201,6 +201,10 @@ SensorMap CarmenConfiguration::computeSensorMap() const{
 		  resolution =360./1024.;
 		  maxrange = 4.1;
 		}
+		else if (beam_no==683) {
+		  resolution =360./1024.;
+		  maxrange = 5.5;
+		}
 		else {
 			key=find("laser_front_laser_resolution");
 			if (key!=end()){
@@ -271,6 +275,10 @@ SensorMap CarmenConfiguration::computeSensorMap() const{
 		  resolution =.5;
 		else if (beam_no==769)
 		  resolution =360./1024.;
+		else if (beam_no==683) {
+		  resolution =360./1024.;
+		   maxrange=5.50;
+		}
 		else {
 			key=find("laser_front_laser_resolution");
 			if (key!=end()){

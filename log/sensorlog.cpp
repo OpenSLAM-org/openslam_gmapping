@@ -6,7 +6,7 @@
 #include <sensor_odometry/odometrysensor.h>
 #include <sensor_range/rangesensor.h>
 
-#define LINEBUFFER_SIZE 4096
+#define LINEBUFFER_SIZE 100000
 
 namespace GMapping {
 
