@@ -33,7 +33,7 @@ namespace GMapping{
 class AutoVal {
 public:
   AutoVal() {};
-  explicit AutoVal(const std::string&);
+   explicit AutoVal(const std::string&);
   explicit AutoVal(double);
   explicit AutoVal(int);
   explicit AutoVal(unsigned int);
@@ -41,13 +41,13 @@ public:
   explicit AutoVal(const char*);
 
   AutoVal(const AutoVal&);
-  AutoVal& operator=(AutoVal const&);
+  AutoVal& operator=(const AutoVal&);
 
   AutoVal& operator=(double);
   AutoVal& operator=(int);
   AutoVal& operator=(unsigned int);
   AutoVal& operator=(bool);
-  AutoVal& operator=(std::string const&);
+  AutoVal& operator=(const std::string&);
 
 public:
   operator std::string() const;
@@ -57,7 +57,7 @@ public:
   operator bool() const;
 
 protected:
-  std::string toLower(std::string const& source) const;
+  std::string toLower(const std::string& source) const;
 
 private:
   std::string m_value;
@@ -68,42 +68,46 @@ class ConfigFile {
   
 public:
   ConfigFile();
-  ConfigFile(std::string const& configFile);
+  ConfigFile(const std::string& configFile);
 
-  bool read(std::string const& configFile);
+  bool read(const std::string& configFile);
   
  
-  AutoVal const& value(std::string const& section, 
-			 std::string const& entry) const;
+  const AutoVal& value(const std::string& section, 
+		       const std::string& entry) const;
 
-  AutoVal const& value(std::string const& section, 
-			 std::string const& entry, 
-			 double def);
+  const AutoVal& value(const std::string& section, 
+		       const std::string& entry, 
+		       double def);
 
-  AutoVal const& value(std::string const& section, 
-			 std::string const& entry, 
-			 bool def);
+  const AutoVal& value(const std::string& section, 
+		       const std::string& entry, 
+		       const char* def);
 
-  AutoVal const& value(std::string const& section, 
-			 std::string const& entry, 
-			 int def);
+  const AutoVal& value(const std::string& section,
+		       const std::string& entry,
+		       bool def);
 
-  AutoVal const& value(std::string const& section, 
-			 std::string const& entry, 
-			 unsigned int def);
+  const AutoVal& value(const std::string& section, 
+		       const std::string& entry, 
+		       int def);
 
-  AutoVal const& value(std::string const& section, 
-			 std::string const& entry, 
-			 std::string const& def);
+  const AutoVal& value(const std::string& section, 
+		       const std::string& entry, 
+		       unsigned int def);
 
+  const AutoVal& value(const std::string& section, 
+		       const std::string& entry, 
+		       const std::string& def);
+  
   void dumpValues(std::ostream& out);
 
 
  protected:
-  std::string trim(std::string const& source, char const* delims = " \t\r\n") const;
-  std::string truncate(std::string const& source, const char* atChar) const;
-  std::string toLower(std::string const& source) const;
-  void insertValue(std::string const& section, std::string const& entry, std::string const& thevalue );
+  std::string trim(const std::string& source, char const* delims = " \t\r\n") const;
+  std::string truncate(const std::string& source, const char* atChar) const;
+  std::string toLower(const std::string& source) const;
+  void insertValue(const std::string& section, const std::string& entry, const std::string& thevalue );
 };
 
 };

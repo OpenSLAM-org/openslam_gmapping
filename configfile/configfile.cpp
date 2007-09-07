@@ -34,7 +34,7 @@
 namespace GMapping{
 using namespace std;
 
-AutoVal::AutoVal(std::string const& value) {
+AutoVal::AutoVal(const std::string& value) {
   m_value=value;
 }
 
@@ -70,11 +70,11 @@ AutoVal::AutoVal(unsigned int i) {
   m_value=s.str();
 }
 
-AutoVal::AutoVal(AutoVal const& other) {
+AutoVal::AutoVal(const AutoVal& other) {
   m_value=other.m_value;
 }
 
-AutoVal& AutoVal::operator=(AutoVal const& other) {
+AutoVal& AutoVal::operator=(const AutoVal& other) {
   m_value=other.m_value;
   return *this;
 }
@@ -112,7 +112,7 @@ AutoVal& AutoVal::operator=(unsigned int i) {
 }
 
 
-AutoVal& AutoVal::operator=(std::string const& s) {
+AutoVal& AutoVal::operator=(const std::string& s) {
   m_value=s;
   return *this;
 }
@@ -140,7 +140,7 @@ AutoVal::operator bool() const {
   return false;
 }
 
-std::string AutoVal::toLower(std::string const& source) const {
+std::string AutoVal::toLower(const std::string& source) const {
   std::string result(source);
   char c='\0';
   for (unsigned int i=0; i<result.length(); i++) {
@@ -157,11 +157,11 @@ std::string AutoVal::toLower(std::string const& source) const {
 ConfigFile::ConfigFile() {
 }
 
-ConfigFile::ConfigFile(std::string const& configFile) {
+ConfigFile::ConfigFile(const std::string& configFile) {
   read(configFile);
 }
 
-bool ConfigFile::read(std::string const& configFile) {
+bool ConfigFile::read(const std::string& configFile) {
   std::ifstream file(configFile.c_str());
 
   if (!file || file.eof())
@@ -193,11 +193,11 @@ bool ConfigFile::read(std::string const& configFile) {
   return true;
 }
 
-void ConfigFile::insertValue(std::string const& section, std::string const& entry, std::string const& thevalue)  {
+void ConfigFile::insertValue(const std::string& section, const std::string& entry, const std::string& thevalue)  {
   m_content[toLower(section)+'/'+toLower(entry)]=AutoVal(thevalue);
 }
 
-AutoVal const& ConfigFile::value(std::string const& section, std::string const& entry) const {
+const AutoVal& ConfigFile::value(const std::string& section, const std::string& entry) const {
 
   std::map<std::string,AutoVal>::const_iterator ci = 
     m_content.find(toLower(section) + '/' + toLower(entry));
@@ -206,7 +206,7 @@ AutoVal const& ConfigFile::value(std::string const& section, std::string const& 
   return ci->second;
 }
 
-AutoVal const& ConfigFile::value(std::string const& section, std::string const& entry, double def) {
+const AutoVal& ConfigFile::value(const std::string& section, const std::string& entry, double def) {
   try {
     return value(section, entry);
   } catch(const char *) {
@@ -214,7 +214,7 @@ AutoVal const& ConfigFile::value(std::string const& section, std::string const& 
   }
 }
 
-AutoVal const& ConfigFile::value(std::string const& section, std::string const& entry, bool def) {
+const AutoVal& ConfigFile::value(const std::string& section, const std::string& entry, bool def) {
   try {
     return value(section, entry);
   } catch(const char *) {
@@ -222,7 +222,7 @@ AutoVal const& ConfigFile::value(std::string const& section, std::string const& 
   }
 }
 
-AutoVal const& ConfigFile::value(std::string const& section, std::string const& entry, int def) {
+const AutoVal& ConfigFile::value(const std::string& section, const std::string& entry, int def) {
   try {
     return value(section, entry);
   } catch(const char *) {
@@ -230,7 +230,7 @@ AutoVal const& ConfigFile::value(std::string const& section, std::string const& 
   }
 }
 
-AutoVal const& ConfigFile::value(std::string const& section, std::string const& entry, unsigned int def) {
+const AutoVal& ConfigFile::value(const std::string& section, const std::string& entry, unsigned int def) {
   try {
     return value(section, entry);
   } catch(const char *) {
@@ -238,7 +238,15 @@ AutoVal const& ConfigFile::value(std::string const& section, std::string const& 
   }
 }
 
-AutoVal const& ConfigFile::value(std::string const& section, std::string const& entry, std::string const& def) {
+const AutoVal& ConfigFile::value(const std::string& section, const std::string& entry, const std::string& def) {
+  try {
+    return value(section, entry);
+  } catch(const char *) {
+    return m_content.insert(std::make_pair(section+'/'+entry, AutoVal(def))).first->second;
+  }
+}
+
+const AutoVal& ConfigFile::value(const std::string& section, const std::string& entry, const char* def) {
   try {
     return value(section, entry);
   } catch(const char *) {
@@ -255,7 +263,7 @@ void ConfigFile::dumpValues(std::ostream& out) {
 }
 
 
-std::string ConfigFile::trim(std::string const& source, char const* delims) const {
+std::string ConfigFile::trim(const std::string& source, char const* delims) const {
   std::string result(source);
   std::string::size_type index = result.find_last_not_of(delims);
   if(index != std::string::npos)
@@ -269,7 +277,7 @@ std::string ConfigFile::trim(std::string const& source, char const* delims) cons
   return result;
 }
 
-std::string ConfigFile::truncate(std::string const& source, const char* atChar) const {
+std::string ConfigFile::truncate(const std::string& source, const char* atChar) const {
   std::string::size_type index = source.find_first_of(atChar);
 
   if(index == 0) 
@@ -281,7 +289,7 @@ std::string ConfigFile::truncate(std::string const& source, const char* atChar) 
     source.substr(0,index);
 }
 
-std::string ConfigFile::toLower(std::string const& source) const {
+std::string ConfigFile::toLower(const std::string& source) const {
   std::string result(source);
   char c='\0';
   for (unsigned int i=0; i<result.length(); i++) {
