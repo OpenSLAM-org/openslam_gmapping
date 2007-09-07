@@ -33,7 +33,7 @@ namespace GMapping{
 class AutoVal {
 public:
   AutoVal() {};
-   explicit AutoVal(const std::string&);
+  explicit AutoVal(const std::string&);
   explicit AutoVal(double);
   explicit AutoVal(int);
   explicit AutoVal(unsigned int);
@@ -69,8 +69,10 @@ class ConfigFile {
 public:
   ConfigFile();
   ConfigFile(const std::string& configFile);
+  ConfigFile(const char* configFile);
 
   bool read(const std::string& configFile);
+  bool read(const char* configFile);
   
  
   const AutoVal& value(const std::string& section, 

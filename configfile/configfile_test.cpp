@@ -42,10 +42,17 @@ int main(int argc, char** argv) {
   cfg.dumpValues(cout);
 
   cout << "-- adding a value --" << endl;
-  cfg.value("unkown","unkown","the new value!");
+  cfg.value("unkown","unkown",std::string("the new value!"));
+
+
+
+
 
   cout << "-- values from configfile & added values --" << endl;
   cfg.dumpValues(cout);
+
+  if ( ((std::string) cfg.value("unkown","unkown",std::string("the new value!"))) != std::string("the new value!"))
+    cerr << "strange error, check strings" << endl;
 
   return 0;
 }

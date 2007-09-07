@@ -161,6 +161,14 @@ ConfigFile::ConfigFile(const std::string& configFile) {
   read(configFile);
 }
 
+ConfigFile::ConfigFile(const char* configFile) {
+  read(configFile);
+}
+
+bool ConfigFile::read(const char* configFile) {
+  return read(std::string(configFile));
+}
+
 bool ConfigFile::read(const std::string& configFile) {
   std::ifstream file(configFile.c_str());
 
