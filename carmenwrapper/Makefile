@@ -1,7 +1,7 @@
 OBJS= carmenwrapper.o
 APPS= 
 
-LIBS+= -L$(CARMEN_HOME)/lib -lnavigator_interface -lsimulator_interface -lrobot_interface -llaser_interface -lglobal -lipc -lm -lutils -lsensor_range -llog -lscanmatcher -lpthread -lz
+LIBS+= -L$(CARMEN_HOME)/lib -lnavigator_interface -lsimulator_interface -lrobot_interface -llaser_interface -lparam_interface -lglobal -lipc -lm -lutils -lsensor_range -llog -lscanmatcher -lpthread -lz
 CPPFLAGS+=-I../sensor -I$(CARMEN_HOME)/include
 
 -include ../global.mk

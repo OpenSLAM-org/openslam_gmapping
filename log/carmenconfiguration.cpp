@@ -348,6 +348,8 @@ SensorMap CarmenConfiguration::computeSensorMap() const{
 			resolution =1.;
 		else if (beam_no==360 || beam_no==361)
 			resolution =.5;
+		else if (beam_no==540 || beam_no==541)
+		  resolution =.5;
 		else if (beam_no==769)
 			resolution =360./1024.;
 		else {
@@ -415,6 +417,8 @@ SensorMap CarmenConfiguration::computeSensorMap() const{
 			resolution =1.;
 		else if (beam_no==360 || beam_no==361)
 			resolution =.5;
+		else if (beam_no==540 || beam_no==541)
+		  resolution =.5;
 		else if (beam_no==769)
 			resolution =360./1024.;
 		else {
