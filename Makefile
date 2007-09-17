@@ -4,9 +4,9 @@ ifeq ($(CARMENSUPPORT),1)
 SUBDIRS=utils  sensor log configfile scanmatcher carmenwrapper gridfastslam gui gfs-carmen 
 else
 ifeq ($(MACOSX),1)
-SUBDIRS=utils gnetwork sensor log configfile scanmatcher gridfastslam 
+SUBDIRS=utils sensor log configfile scanmatcher gridfastslam 
 else
-SUBDIRS=utils gnetwork sensor log configfile scanmatcher gridfastslam gui 
+SUBDIRS=utils sensor log configfile scanmatcher gridfastslam gui 
 endif
 endif
 
