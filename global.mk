@@ -7,14 +7,14 @@ CC=gcc
 CXX=g++
 
 # Paths
-MAPPING_ROOT=/home/giorgio/src/gmapping-openslam/trunk
-LIBDIR=/home/giorgio/src/gmapping-openslam/trunk/lib
-BINDIR=/home/giorgio/src/gmapping-openslam/trunk/bin
+MAPPING_ROOT=/home/merci/stachnis/code/gmapping
+LIBDIR=/home/merci/stachnis/code/gmapping/lib
+BINDIR=/home/merci/stachnis/code/gmapping/bin
 
 # Build tools
-PRETTY=/home/giorgio/src/gmapping-openslam/trunk/build_tools/pretty_compiler
-MESSAGE=/home/giorgio/src/gmapping-openslam/trunk/build_tools/message
-TESTLIB=/home/giorgio/src/gmapping-openslam/trunk/build_tools/testlib
+PRETTY=/home/merci/stachnis/code/gmapping/build_tools/pretty_compiler
+MESSAGE=/home/merci/stachnis/code/gmapping/build_tools/message
+TESTLIB=/home/merci/stachnis/code/gmapping/build_tools/testlib
 
 # QT support
 MOC=/usr/lib/qt3/bin/moc
@@ -32,13 +32,13 @@ ARIA_INCLUDE=
 # UIC=
 
 # Generic makefiles
-MAKEFILE_GENERIC=/home/giorgio/src/gmapping-openslam/trunk/build_tools/Makefile.generic-shared-object
-MAKEFILE_APP=/home/giorgio/src/gmapping-openslam/trunk/build_tools/Makefile.app
-MAKEFILE_SUBDIRS=/home/giorgio/src/gmapping-openslam/trunk/build_tools/Makefile.subdirs
+MAKEFILE_GENERIC=/home/merci/stachnis/code/gmapping/build_tools/Makefile.generic-shared-object
+MAKEFILE_APP=/home/merci/stachnis/code/gmapping/build_tools/Makefile.app
+MAKEFILE_SUBDIRS=/home/merci/stachnis/code/gmapping/build_tools/Makefile.subdirs
 
 
 # Flags
-CPPFLAGS+=-DLINUX -I/home/giorgio/src/gmapping-openslam/trunk -DCARMEN_SUPPORT 
+CPPFLAGS+=-DLINUX -I/home/merci/stachnis/code/gmapping -DCARMEN_SUPPORT 
 CXXFLAGS+=
 LDFLAGS+=
 CARMENSUPPORT=1
@@ -49,5 +49,5 @@ GSL_INCLUDE=-I/usr/include/
 
 
 
-include /home/giorgio/src/gmapping-openslam/trunk/manual.mk
+include /home/merci/stachnis/code/gmapping/manual.mk
 

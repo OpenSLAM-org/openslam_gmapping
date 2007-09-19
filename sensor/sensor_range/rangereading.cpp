@@ -38,7 +38,8 @@ unsigned int RangeReading::rawView(double* v, double density) const{
 			Point dp=lastPoint-lp;
 			double distance=sqrt(dp*dp);
 			if (distance<density){
-				v[i]=MAXDOUBLE;
+			  //				v[i]=MAXDOUBLE;
+				v[i]=std::numeric_limits<double>::max();
 				suppressed++;
 			}
 			else{
@@ -49,7 +50,9 @@ unsigned int RangeReading::rawView(double* v, double density) const{
 			//std::cerr<< "suppressed " << suppressed <<"/"<<size() << std::endl;
 		}
 	}
-	return size();
+	//	return size();
+	return static_cast<unsigned int>(size());
+
 };
 
 unsigned int RangeReading::activeBeams(double density) const{
@@ -82,7 +85,8 @@ unsigned int RangeReading::activeBeams(double density) const{
 std::vector<Point> RangeReading::cartesianForm(double maxRange) const{
 	const RangeSensor* rangeSensor=dynamic_cast<const RangeSensor*>(getSensor());
 	assert(rangeSensor && rangeSensor->beams().size());
-	uint m_beams=rangeSensor->beams().size();
+	//	uint m_beams=rangeSensor->beams().size();
+	uint m_beams=static_cast<unsigned int>(rangeSensor->beams().size());
 	std::vector<Point> cartesianPoints(m_beams);
 	double px,py,ps,pc;
 	px=rangeSensor->getPose().x;
