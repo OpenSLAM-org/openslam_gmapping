@@ -191,7 +191,7 @@ int main(int argc, char** argv){
 		cout << "DONE " << count <<endl;
 
 		QPixmap pixmap(smap.getMapSizeX(), smap.getMapSizeY());
-		pixmap.fill(Qt::blue);
+		pixmap.fill(QColor(200, 200, 255));
 		QPainter painter(&pixmap);
 		for (int x=0; x<smap.getMapSizeX(); x++)
 			for (int y=0; y<smap.getMapSizeY(); y++){
@@ -205,7 +205,7 @@ int main(int argc, char** argv){
 		
 		cout << "painting trajectories" << endl;
 		for (int p=0; p<particles; p++){
-			painter.setPen(QColor(Qt::green));
+			painter.setPen(QColor(Qt::red));
 			if (p==bestIdx)
 				continue;
 			bool first=true;
@@ -224,7 +224,7 @@ int main(int argc, char** argv){
 			}	
 			paths[p].destroyReferences();;
 		}
-		painter.setPen(QColor(Qt::red));
+		painter.setPen(QColor(Qt::black));
 		bool first=true;
 		IntPoint oldPoint(0,0);
 		for (RecordList::const_iterator mt=paths[bestIdx].begin(); mt!=paths[bestIdx].end(); mt++){
