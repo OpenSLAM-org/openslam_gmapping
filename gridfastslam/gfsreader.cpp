@@ -132,13 +132,23 @@ void LaserRecord::write(ostream& os){
 	  os <<" 4.712389";  // fov
 	  os <<" 0.008727";  // angular res
 	  os <<" 30.0" ;  // maxrange
-	}
-	else {     // PLS
+	} else if ((dim == 361)||(dim == 360)){     // PLS 360
 	  os <<" 0";  // laser type
 	  os <<" -1.570796";  // start_angle
 	  os <<" 3.141593";  // fov
-	  os <<" 0.017453";  // angular res
+	  os <<" " << 0.017453/2;  // angular res
 	  os <<" 81.9" ;  // maxrange
+	} else if ((dim == 181)||(dim == 180)) {     // PLS 180
+	  os <<" 0";  // laser type
+	  os <<" -1.570796";  // start_angle
+	  os <<" 3.141593";  // fov
+	  os <<" " <<0.017453;  // angular res
+	  os <<" 81.9" ;  // maxrange
+	} else if (dim == 683) {     // HOKUYO_URG
+	  os << " 2 -2.094395 4.188790 0.006136 5.600000 ";
+	} else {
+	  cerr << "no admissible laser found to generate the log" << endl
+	       << "check the number of readings" << endl;
 	}
 	os <<" 0.01"; // accuracy	
 	os <<" 0" ;  // remission mode
