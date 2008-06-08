@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <sys/types.h>
 #include <log/carmenconfiguration.h>
 #include <log/sensorlog.h>
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "scanmatcherprocessor.h"
+#include "eig3.h"
 
 //#define SCANMATHCERPROCESSOR_DEBUG
 namespace GMapping {
@@ -14,7 +15,7 @@ ScanMatcherProcessor::ScanMatcherProcessor(const ScanMatcherMap& m)
   m_maxMove=1;
   m_beams=0;
   m_computeCovariance=false;
-  m_eigenspace=gsl_eigen_symmv_alloc(3);
+  //m_eigenspace=gsl_eigen_symmv_alloc(3);
   useICP=false;
 }
 
@@ -27,12 +28,12 @@ ScanMatcherProcessor::ScanMatcherProcessor
 	m_maxMove=1;
 	m_beams=0;
 	m_computeCovariance=false;
-	m_eigenspace=gsl_eigen_symmv_alloc(3);
+	//m_eigenspace=gsl_eigen_symmv_alloc(3);
 	useICP=false;
 }
 
 ScanMatcherProcessor::~ScanMatcherProcessor (){
-	gsl_eigen_symmv_free(m_eigenspace);
+	//gsl_eigen_symmv_free(m_eigenspace);
 }
 
 
@@ -143,19 +144,36 @@ void ScanMatcherProcessor::processScan(const RangeReading & reading){
 		if(m_computeCovariance){
 			ScanMatcher::CovarianceMatrix cov;
 			score=m_matcher.optimize(newPose, cov, m_map, m_pose, plainReading);
+                        /*
 			gsl_matrix* m=gsl_matrix_alloc(3,3);
 			gsl_matrix_set(m,0,0,cov.xx); gsl_matrix_set(m,0,1,cov.xy); gsl_matrix_set(m,0,2,cov.xt);
 			gsl_matrix_set(m,1,0,cov.xy); gsl_matrix_set(m,1,1,cov.yy); gsl_matrix_set(m,1,2,cov.yt);
 			gsl_matrix_set(m,2,0,cov.xt); gsl_matrix_set(m,2,1,cov.yt); gsl_matrix_set(m,2,2,cov.tt);
 			gsl_matrix* evec=gsl_matrix_alloc(3,3);
 			gsl_vector* eval=gsl_vector_alloc(3);
-			gsl_eigen_symmv (m, eval,  evec, m_eigenspace);
+                        */
+                        double m[3][3];
+                        double evec[3][3];
+                        double eval[3];
+			m[0][0] = cov.xx; 
+                        m[0][1] = cov.xy; 
+                        m[0][2] = cov.xt;
+			m[1][0] = cov.xy;
+                        m[1][1] = cov.yy;
+                        m[1][2] = cov.yt;
+			m[2][0] = cov.xt;
+                        m[2][1] = cov.yt;
+                        m[2][2] = cov.tt;
+
+			//gsl_eigen_symmv (m, eval,  evec, m_eigenspace);
+                        eigen_decomposition(m,evec,eval);
 #ifdef SCANMATHCERPROCESSOR_DEBUG
-			cout << "evals=" << gsl_vector_get(eval, 0) <<  " " << gsl_vector_get(eval, 1)<< " " << gsl_vector_get(eval, 2)<<endl;
+			//cout << "evals=" << gsl_vector_get(eval, 0) <<  " " << gsl_vector_get(eval, 1)<< " " << gsl_vector_get(eval, 2)<<endl;
+			cout << "evals=" << eval[0] <<  " " << eval[1]<< " " << eval[2]<<endl;
 #endif
-			gsl_matrix_free(m);
-			gsl_matrix_free(evec);
-			gsl_vector_free(eval);
+			//gsl_matrix_free(m);
+			//gsl_matrix_free(evec);
+			//gsl_vector_free(eval);
 		} else {
 			if (useICP){
 				cerr << "USING ICP" << endl;

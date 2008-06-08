@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <assert.h>
+#include <sys/types.h>
 #include <sensor_odometry/odometrysensor.h>
 #include <sensor_range/rangesensor.h>
 

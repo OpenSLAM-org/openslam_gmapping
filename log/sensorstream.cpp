@@ -1,7 +1,10 @@
 #include <assert.h>
 #include <sstream>
 #include "sensorstream.h"
-#define LINEBUFFER_SIZE 1000000 //for not Cyrill to unbless me, it is better to exagerate :-))
+//#define LINEBUFFER_SIZE 1000000 //for not Cyrill to unbless me, it is better to exagerate :-))
+// Can't declare a buffer that big on the stack.  So we'll risk Cyrill's
+// unblessing, and make it smaller.
+#define LINEBUFFER_SIZE 8192
 
 namespace GMapping {
 

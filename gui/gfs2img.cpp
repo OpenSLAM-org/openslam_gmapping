@@ -203,6 +203,7 @@ int main(int argc, char** argv){
 				}
 			}
 		
+		/*
 		cout << "painting trajectories" << endl;
 		for (int p=0; p<particles; p++){
 			painter.setPen(QColor(Qt::red));
@@ -240,6 +241,7 @@ int main(int argc, char** argv){
 			}
 		}	
 		paths[bestIdx].destroyReferences();;
+		*/
 		cout << " DONE" << endl;
 		cout << "writing image" << endl;
 		QImage img=pixmap.convertToImage();

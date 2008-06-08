@@ -4,7 +4,7 @@
 #include <map>
 #include <set>
 #include <fstream>
-#include <gsl/gsl_blas.h>
+//#include <gsl/gsl_blas.h>
 
 #include <utils/stat.h>
 #include "gridslamprocessor.h"

@@ -8,7 +8,7 @@
 	#include <limits.h>
 	#include <math.h>
 	#define MAXDOUBLE 1e1000
-	#define isnan(x) (x==FP_NAN)
+	//#define isnan(x) (x==FP_NAN)
 #endif
 #ifdef _WIN32
   #include <limits>

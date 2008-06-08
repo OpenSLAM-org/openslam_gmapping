@@ -50,8 +50,11 @@ for GUESS_QTDIR in `ls /usr/lib/ | grep -E "qt3|qt-3"`; do
 	fi ;
 done ;
 if [ ! "$QT_INCLUDE" ]; then
-	echo -e "\n\n*** Qt 3.x not found please set QT_INCLUDE, QT_LIB, MOC by hand\n\a"
+	echo -e "\n\n*** Qt 3.x not found.  I'll make some educated guesses.  If this doesn't work, please set QT_INCLUDE, QT_LIB, MOC by hand in the file global.mk.\n\a"
 	#exit 1
+	QT_INCLUDE="-I/usr/include/qt3";
+	QT_LIB="-lqt-mt" ;
+	MOC="moc-qt3" ;
 else
 	echo "Ok" ;
 fi
@@ -72,21 +75,21 @@ else
 	echo "Ok" ;
 fi
 
-echo -n "Checking for Gsl libs "
-if [ "$OSTYPE" = "LINUX" ]; then
-	GSL_LIB="-lgsl -lgslcblas"
-	GSL_INCLUDE="-I/usr/include/"
-fi
-if [ "$OSTYPE" = "MACOSX" ]; then
-	GSL_LIB="-L/sw/lib -lgsl -lgslcblas"
-	GSL_INCLUDE="-I/sw/include"
-fi
-
-if [ ! "$GSL_INCLUDE" ]; then
-	echo -e "\n\n*** GSL not found, please set GSL_INCLUDE and GSL_LIB by hand\n\a"
-else
-	echo "Ok" ;
-fi
+#echo -n "Checking for Gsl libs "
+#if [ "$OSTYPE" = "LINUX" ]; then
+#	GSL_LIB="-lgsl -lgslcblas"
+#	GSL_INCLUDE="-I/usr/include/"
+#fi
+#if [ "$OSTYPE" = "MACOSX" ]; then
+#	GSL_LIB="-L/sw/lib -lgsl -lgslcblas"
+#	GSL_INCLUDE="-I/sw/include"
+#fi
+#
+#if [ ! "$GSL_INCLUDE" ]; then
+#	echo -e "\n\n*** GSL not found, please set GSL_INCLUDE and GSL_LIB by hand\n\a"
+#else
+#	echo "Ok" ;
+#fi
 
 
 # echo -n "Checking for KDE 3.x includes ... "
@@ -181,7 +184,6 @@ else
 	fi
 fi	
 
-
 CONFIG=global.mk
 rm -f $CONFIG
 
@@ -226,14 +228,11 @@ MAKEFILE_SUBDIRS=$MAPPING_ROOT/build_tools/Makefile.subdirs
 
 
 # Flags
-CPPFLAGS+=$CPPFLAGS -I$MAPPING_ROOT $CARMENFLAG 
+CPPFLAGS+=$CPPFLAGS -I$MAPPING_ROOT $CARMENFLAG
 CXXFLAGS+=$CXXFLAGS
-LDFLAGS+=$LDFLAGS
+LDFLAGS+=$LDFLAGS -Xlinker -rpath $MAPPING_ROOT/lib
 CARMENSUPPORT=$CARMENSUPPORT
 ARIASUPPORT=$ARIASUPPORT
-
-GSL_LIB=$GSL_LIB
-GSL_INCLUDE=$GSL_INCLUDE
 
 $OTHER
 

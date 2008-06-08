@@ -4,7 +4,7 @@
 #include <log/sensorlog.h>
 #include <sensor/sensor_range/rangesensor.h>
 #include <sensor/sensor_range/rangereading.h>
-#include <gsl/gsl_eigen.h>
+//#include <gsl/gsl_eigen.h>
 #include "scanmatcher.h"
 
 namespace GMapping {
@@ -38,7 +38,7 @@ class ScanMatcherProcessor{
 		OrientedPoint m_pose;
 		OrientedPoint m_odoPose;
 		int  m_count;
-		gsl_eigen_symmv_workspace * m_eigenspace;
+		//gsl_eigen_symmv_workspace * m_eigenspace;
 };
 
 };

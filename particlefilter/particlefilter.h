@@ -1,6 +1,7 @@
 #ifndef PARTICLEFILTER_H
 #define PARTICLEFILTER_H
 #include <stdlib.h>
+#include <sys/types.h>
 #include<vector>
 #include<utility>
 #include<cmath>
