@@ -134,21 +134,21 @@ void LaserRecord::write(ostream& os){
           os <<" 0.008727";  // angular res
           os <<" 30.0" ;  // maxrange
         }
-        if ((dim == 180)||(dim == 181)) { // PLS
+        else if ((dim == 180)||(dim == 181)) { // PLS
           os <<" 0";  // laser type
           os <<" -1.570796";  // start_angle
           os <<" 3.141593";  // fov
           os <<" 0.017453";  // angular res
           os <<" 81.9" ;  // maxrange
         }
-        if ((dim == 360)||(dim == 361)) { // LMS
+        else if ((dim == 360)||(dim == 361)) { // LMS
           os <<" 0";  // laser type
           os <<" -1.570796";  // start_angle
           os <<" 3.141593";  // fov
           os <<" 0.008726";  // angular res
           os <<" 81.9" ;  // maxrange
         }
-        if ((dim == 682)||(dim == 683)) { // URG
+        else if ((dim == 682)||(dim == 683)) { // URG
           os <<" 0";  // laser type
           os <<" -2.094395";  // start_angle
           os <<" 4.1887902";  // fov
