@@ -126,20 +126,42 @@ void LaserRecord::write(ostream& os){
 	os << "WEIGHT " << weight << endl;
 	os << "ROBOTLASER1 ";
 	
-	if ((dim == 541)||(dim == 540)) { // S300
-	  os <<" 4";  // laser type
-	  os <<" -2.351831";  // start_angle
-	  os <<" 4.712389";  // fov
-	  os <<" 0.008727";  // angular res
-	  os <<" 30.0" ;  // maxrange
-	}
-	else {     // PLS
-	  os <<" 0";  // laser type
-	  os <<" -1.570796";  // start_angle
-	  os <<" 3.141593";  // fov
-	  os <<" 0.017453";  // angular res
-	  os <<" 81.9" ;  // maxrange
-	}
+        
+        if ((dim == 541)||(dim == 540)) { // S300
+          os <<" 4";  // laser type
+          os <<" -2.351831";  // start_angle
+          os <<" 4.712389";  // fov
+          os <<" 0.008727";  // angular res
+          os <<" 30.0" ;  // maxrange
+        }
+        if ((dim == 180)||(dim == 181)) { // PLS
+          os <<" 0";  // laser type
+          os <<" -1.570796";  // start_angle
+          os <<" 3.141593";  // fov
+          os <<" 0.017453";  // angular res
+          os <<" 81.9" ;  // maxrange
+        }
+        if ((dim == 360)||(dim == 361)) { // LMS
+          os <<" 0";  // laser type
+          os <<" -1.570796";  // start_angle
+          os <<" 3.141593";  // fov
+          os <<" 0.008726";  // angular res
+          os <<" 81.9" ;  // maxrange
+        }
+        if ((dim == 682)||(dim == 683)) { // URG
+          os <<" 0";  // laser type
+          os <<" -2.094395";  // start_angle
+          os <<" 4.1887902";  // fov
+          os << " " <<   360.0/1024.0/180.0*M_PI;  // angular res
+          os <<" 5.5" ;  // maxrange
+        }
+        else {     // PLS
+          os <<" 0";  // laser type
+          os <<" -1.570796";  // start_angle
+          os <<" 3.141593";  // fov
+          os <<" 0.017453";  // angular res
+          os <<" 81.9" ;  // maxrange
+        }
 	os <<" 0.01"; // accuracy	
 	os <<" 0" ;  // remission mode
 	os <<" "<< dim; // num readings
