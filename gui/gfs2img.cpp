@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <limits.h>
 #include <scanmatcher/scanmatcher.h>
 #include <gridfastslam/gfsreader.h>

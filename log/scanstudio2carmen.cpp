@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -10,7 +11,7 @@
 using namespace std;
 using namespace GMapping;
 
-int  main (int argc, const char** argv){
+int  main (int argc, char** argv){
 	if (argc<3){
 		cout << "usage scanstudio2carmen scanfilename carmenfilename" << endl;
 		exit(1);

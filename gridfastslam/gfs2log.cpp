@@ -1,3 +1,4 @@
+#include <cstring>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -12,7 +13,7 @@ using namespace std;
 using namespace GMapping;
 using namespace GMapping::GFSReader;
 
-int main (unsigned int argc, const char * const * argv){
+int main (int argc, const char * const * argv){
 	if (argc<3){
 		cout << "usage gfs2log [-err] [-neff] [-part] [-odom] <infilename> <outfilename>" << endl;
 		cout << "  -odom : dump raw odometry in ODOM message instead of inpolated corrected one" << endl;

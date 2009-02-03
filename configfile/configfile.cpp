@@ -21,6 +21,7 @@
  *****************************************************************/
 
 
+#include <cstdlib>
 #include "configfile.h"
 
 #include <fstream>

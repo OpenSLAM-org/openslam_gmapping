@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <log/carmenconfiguration.h>
@@ -7,7 +8,7 @@
 using namespace std;
 using namespace GMapping;
 
-int main(char argc, char ** argv){
+int main(int argc, char ** argv){
 	if (argc<2){
 		cerr << "usage "<<argv[0]<<" <filename> <outfilename>" << endl;
 		cerr << "or "<<argv[0]<<" <filename> for standard output" << endl;

@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include "carmenconfiguration.h"
 #include <iostream>
 #include <sstream>

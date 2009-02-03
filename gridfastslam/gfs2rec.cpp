@@ -1,3 +1,4 @@
+#include <cstring>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -224,7 +225,7 @@ struct RecordList: public list<Record*>{
 		}
 		unsigned int dim=scanmatch->dim;
 		sampleSize=(int)dim;
-		double bestw=-1e1000;
+		double bestw=-1e200;
 		unsigned int best=scanmatch->dim+1;
 		for (unsigned i=0; i<dim; i++){
 			double w=getLogWeight(i);
@@ -368,7 +369,7 @@ struct RecordList: public list<Record*>{
 
 
 
-int main (unsigned int argc, const char * const * argv){
+int main (int argc, const char * const * argv){
 	if (argc<3){
 		cout << "usage gfs2rec [-err] <infilename> <outfilename>" << endl;
 		return -1;

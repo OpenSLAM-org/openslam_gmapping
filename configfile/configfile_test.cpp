@@ -21,7 +21,7 @@
  *****************************************************************/
 
 
-
+#include <cstdlib>
 #include <iostream>
 #include "configfile.h"
 

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main(unsigned int argc, const char* const *argv){
+int main(int argc, char**argv){
 	if (argc<3){
 		cout << "usage gfs2neff <infilename> <nefffilename>" << endl;
 		return -1;

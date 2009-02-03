@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <sys/types.h>
@@ -8,7 +9,7 @@
 using namespace std;
 using namespace GMapping;
 
-int main(char argc, char ** argv){
+int main(int argc, char ** argv){
   double maxrange=2.;
 	if (argc<2){
 		cout << "usage log_plot <filename> | gnuplot" << endl;
