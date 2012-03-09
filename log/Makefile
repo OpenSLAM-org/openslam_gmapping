@@ -1,7 +1,7 @@
 OBJS= configuration.o carmenconfiguration.o sensorlog.o sensorstream.o
 APPS= log_test log_plot scanstudio2carmen rdk2carmen
 
-LDFLAGS+= -lsensor_base -l sensor_odometry -l sensor_range
+LDFLAGS+=  -lsensor_range -lsensor_odometry -lsensor_base 
 CPPFLAGS+= -I../sensor 
 
 -include ../global.mk

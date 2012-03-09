@@ -42,7 +42,7 @@ endif
 # Generazione delle applicazioni
 $(BINDIR)/%: %.o $(SONAME)
 	@$(MESSAGE) "Linking application `basename "$@"`"
-	@$(PRETTY) "$(CXX) $(LDFLAGS) -L$(LIBDIR) $(LIBS) -l$(LIBNAME) $< -o $@"
+	@$(PRETTY) "$(CXX) $< -l$(LIBNAME) $(LDFLAGS) -L$(LIBDIR) $(LIBS)  -o $@"
 
 #Generazione dei moc files
 moc_%.cpp:              %.h
